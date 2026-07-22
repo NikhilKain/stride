@@ -1,0 +1,14 @@
+# Normalise line endings so the repo is identical on every platform
+* text=auto eol=lf
+
+# The wrapper script must keep LF or it will not run on Linux/macOS
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+
+# Binary assets — never touch these
+*.jar   binary
+*.png   binary
+*.jpg   binary
+*.ttf   binary
+*.otf   binary
+*.webp  binary

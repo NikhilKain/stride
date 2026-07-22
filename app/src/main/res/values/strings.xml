@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Stride</string>
+    <string name="share_card_title">Share your stride</string>
+    <string name="notif_channel_goal">Goal celebrations</string>
+    <string name="notif_channel_nudge">Movement nudges</string>
+    <string name="notif_channel_tracking">Background step tracking</string>
+
+    <!-- Navigation -->
+    <string name="nav_today">Today</string>
+    <string name="nav_history">History</string>
+    <string name="nav_awards">Awards</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Dashboard -->
+    <string name="distance">Distance</string>
+    <string name="calories">Calories</string>
+    <string name="active_min">Active min</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="seven_day_avg">7-day average</string>
+    <string name="this_week">This week</string>
+    <string name="of_steps_goal">of %1$s steps</string>
+    <string name="steps_to_go">%1$s steps to go</string>
+    <string name="goal_crushed">Goal crushed — legendary! 🎉</string>
+    <string name="first_step_quote">Every journey starts with one step</string>
+    <string name="action_share">Share</string>
+    <string name="action_goal">Goal</string>
+    <string name="action_sync">Sync</string>
+    <string name="edit_goal">Edit goal</string>
+    <string name="daily_goal">Daily goal</string>
+    <string name="badge_unlocked">Badge unlocked!</string>
+    <string name="streak">Streak</string>
+    <string name="hc_connect_title">Connect Health Connect</string>
+    <string name="hc_update_title">Update Health Connect</string>
+    <string name="hc_sensor_title">Using device step sensor</string>
+    <string name="hc_connect_body">Get richer, more accurate steps, distance and calories synced from all your fitness apps.</string>
+    <string name="hc_update_body">Your Health Connect app needs an update before Stride can read your steps.</string>
+    <string name="hc_sensor_body">Health Connect isn\'t available on this device, so Stride counts steps with the built-in sensor.</string>
+    <string name="connect">Connect</string>
+
+    <!-- History -->
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="day_steps">%1$s steps</string>
+    <string name="total">Total</string>
+    <string name="best_day">Best day</string>
+    <string name="goals_met">Goals met</string>
+    <string name="active_short">%1$d min</string>
+
+    <!-- Awards -->
+    <string name="streak_days">%1$d days</string>
+    <string name="streak_day_one">1 day</string>
+    <string name="streak_current_best">current streak · best %1$d</string>
+    <string name="close">Close</string>
+    <string name="unlocked_on">Unlocked %1$s</string>
+
+    <!-- Achievements -->
+    <string name="ach_first_steps_title">First Steps</string>
+    <string name="ach_first_steps_desc">Record your very first day of steps</string>
+    <string name="ach_day_10k_title">10K Day</string>
+    <string name="ach_day_10k_desc">Walk 10,000 steps in a single day</string>
+    <string name="ach_day_15k_title">Pathfinder</string>
+    <string name="ach_day_15k_desc">Walk 15,000 steps in a single day</string>
+    <string name="ach_day_20k_title">Trailblazer</string>
+    <string name="ach_day_20k_desc">Walk 20,000 steps in a single day</string>
+    <string name="ach_day_30k_title">Ultra Walker</string>
+    <string name="ach_day_30k_desc">Walk 30,000 steps in a single day</string>
+    <string name="ach_streak_3_title">Warming Up</string>
+    <string name="ach_streak_3_desc">Hit your goal 3 days in a row</string>
+    <string name="ach_streak_7_title">On Fire</string>
+    <string name="ach_streak_7_desc">Hit your goal 7 days in a row</string>
+    <string name="ach_streak_14_title">Unstoppable</string>
+    <string name="ach_streak_14_desc">Hit your goal 14 days in a row</string>
+    <string name="ach_streak_30_title">Habit Forged</string>
+    <string name="ach_streak_30_desc">Hit your goal 30 days in a row</string>
+    <string name="ach_week_70k_title">Big Week</string>
+    <string name="ach_week_70k_desc">Walk 70,000 steps within one week</string>
+    <string name="ach_steady_5of7_title">Steady Strider</string>
+    <string name="ach_steady_5of7_desc">Hit your goal on 5 days of any week</string>
+    <string name="ach_marathon_title">Marathon Club</string>
+    <string name="ach_marathon_desc">Cover 42.2 km of total distance</string>
+    <string name="ach_dist_100k_title">Century Rambler</string>
+    <string name="ach_dist_100k_desc">Cover 100 km of total distance</string>
+    <string name="ach_million_title">Millionaire</string>
+    <string name="ach_million_desc">Reach 1,000,000 lifetime steps</string>
+
+    <!-- Settings -->
+    <string name="appearance">Appearance</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="wallpaper_colors">Wallpaper colors</string>
+    <string name="wallpaper_colors_sub">Use Material You dynamic color</string>
+    <string name="amoled_black">AMOLED black</string>
+    <string name="amoled_black_sub">Pure black dark mode for OLED panels</string>
+    <string name="color_style">Color style</string>
+    <string name="style_tonal_spot">Tonal Spot</string>
+    <string name="style_neutral">Neutral</string>
+    <string name="style_monochrome">Monochrome</string>
+    <string name="style_vibrant">Vibrant</string>
+    <string name="style_expressive">Expressive</string>
+    <string name="font">Font</string>
+    <string name="font_system">System</string>
+    <string name="font_nunito">Nunito</string>
+    <string name="font_inter">Inter</string>
+    <string name="font_outfit">Outfit</string>
+    <string name="font_lexend">Lexend</string>
+    <string name="font_manrope">Manrope</string>
+    <string name="font_grotesk">Grotesk</string>
+    <string name="goals_body">Goals &amp; body</string>
+    <string name="weekly_goal">Weekly goal</string>
+    <string name="height">Height</string>
+    <string name="weight_label">Weight</string>
+    <string name="stride_length">Stride length</string>
+    <string name="height_sub">%1$d cm · sets stride length</string>
+    <string name="weight_sub">%1$d kg · tunes calorie estimate</string>
+    <string name="stride_auto">Auto — %1$d cm from height</string>
+    <string name="stride_manual">%1$d cm (manual)</string>
+    <string name="auto">Auto</string>
+    <string name="off">Off</string>
+    <string name="steps_value">%1$s steps</string>
+    <string name="units">Units</string>
+    <string name="kilometres">Kilometres</string>
+    <string name="miles">Miles</string>
+    <string name="health_connect">Health Connect</string>
+    <string name="hc_connected">Connected</string>
+    <string name="hc_not_connected">Not connected</string>
+    <string name="hc_update_required">Update required</string>
+    <string name="hc_unavailable">Unavailable on this device</string>
+    <string name="hc_connected_sub">Steps, distance and calories sync automatically</string>
+    <string name="hc_not_connected_sub">Tap to grant read access</string>
+    <string name="hc_update_sub">Update the Health Connect app</string>
+    <string name="hc_unavailable_sub">Stride falls back to the built-in step sensor</string>
+    <string name="tracking">Tracking</string>
+    <string name="background_tracking">Background tracking</string>
+    <string name="background_tracking_sub">Count steps all day with a live notification. Turn off to force-stop.</string>
+    <string name="notifications">Notifications</string>
+    <string name="goal_reached">Goal reached</string>
+    <string name="goal_reached_sub">Celebrate when you hit your goal</string>
+    <string name="evening_nudge">Evening nudge</string>
+    <string name="evening_nudge_sub">A gentle reminder if you\'re behind</string>
+    <string name="data">Data</string>
+    <string name="export_backup">Export backup</string>
+    <string name="export_backup_sub">Save history, awards and settings to a file</string>
+    <string name="import_backup">Import backup</string>
+    <string name="import_backup_sub">Restore from a Stride backup file</string>
+    <string name="backup_exported">Backup saved</string>
+    <string name="backup_imported">Backup restored — %1$d days</string>
+    <string name="backup_failed">That file couldn\'t be read</string>
+    <string name="language">Language</string>
+    <string name="app_language">App language</string>
+    <string name="app_language_sub">Choose Stride\'s language</string>
+    <string name="about">About</string>
+    <string name="about_sub">v%1$s · made to keep you moving</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_tagline">Every step counts. Watch your days fill up with movement, streaks and little wins.</string>
+    <string name="steps_your_data">Your steps, your data</string>
+    <string name="hc_rationale_available">Stride reads steps, distance and calories from Health Connect — the private, on-device health hub. Nothing ever leaves your phone.</string>
+    <string name="hc_rationale_update">Health Connect needs an update. You can update it later — meanwhile Stride will count steps with the built-in sensor.</string>
+    <string name="hc_rationale_unavailable">Health Connect isn\'t available here, so Stride will count steps using your phone\'s built-in sensor instead.</string>
+    <string name="use_sensor_instead">Use the sensor instead</string>
+    <string name="use_builtin_sensor">Use the built-in sensor</string>
+    <string name="set_your_pace">Set your pace</string>
+    <string name="steps_per_day">steps per day</string>
+    <string name="height_value">Height — %1$d cm</string>
+    <string name="height_hint">Used to estimate your stride length and distance.</string>
+    <string name="lets_stride">Let\'s stride</string>
+    <string name="next_page">Next</string>
+
+    <!-- Notifications -->
+    <string name="notif_goal_title">Goal crushed! 🎉</string>
+    <string name="notif_goal_text">%1$s steps today — keep that streak alive.</string>
+    <string name="notif_nudge_title">Evening stroll?</string>
+    <string name="notif_nudge_text">%1$s steps to go — a short walk gets you there.</string>
+    <string name="notif_badge_title">Badge unlocked</string>
+    <string name="notif_badge_text">You earned “%1$s”</string>
+    <string name="notif_steps_today">%1$s steps today</string>
+    <string name="notif_goal_progress">%1$d%% of %2$s goal</string>
+    <string name="stop">Stop</string>
+
+    <string name="this_month">This month</string>
+
+    <string name="tracking_active">Background tracking is on</string>
+
+    <!-- Live Updates (Android 16+) -->
+    <string name="live_updates">Live updates</string>
+    <string name="live_updates_sub">Show a live step chip in the status bar and lock screen while tracking (Android 16+).</string>
+
+
+    <!-- Licensing -->
+
+    <!-- Updates -->
+    <string name="updates">Updates</string>
+    <string name="check_updates">Check for updates</string>
+    <string name="check_updates_sub">Tap to look for a new version now</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_up_to_date">You\'re on the latest version</string>
+    <string name="update_failed">Couldn\'t check — try again later</string>
+    <string name="update_frequency">Check automatically</string>
+    <string name="freq_never">Never</string>
+    <string name="freq_daily">Daily</string>
+    <string name="freq_weekly">Weekly</string>
+    <string name="freq_monthly">Monthly</string>
+    <string name="update_available">Version %1$s available</string>
+    <string name="update_no_notes">A new version of Stride is available.</string>
+    <string name="update_download">Download</string>
+    <string name="update_skip">Skip this version</string>
+</resources>

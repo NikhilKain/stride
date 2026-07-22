@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches the launcher art's background fill for a seamless splash -->
+    <color name="splash_background">#0D0D11</color>
+    <color name="ic_launcher_background">#00A88E</color>
+    <!-- Accent used by the Android 16 Live Update progress bar / chip -->
+    <color name="live_update_accent">#00A88E</color>
+</resources>

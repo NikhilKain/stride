@@ -1,0 +1,277 @@
+package com.vythera.stride.ui.theme
+
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
+
+data class StridePalette(
+    val id: String,
+    val label: String,
+    val seed: Color,
+    val light: ColorScheme,
+    val dark: ColorScheme
+)
+
+/*
+ * Zenith-style surface treatment: the window background is a soft seed-tinted
+ * wash, while cards (surfaceContainer*) pop as near-white in light mode and
+ * gently elevated tones in dark mode.
+ */
+
+private val TideLight = lightColorScheme(
+    primary = Color(0xFF006960),
+    onPrimary = Color(0xFFFFFFFF),
+    primaryContainer = Color(0xFF9EF2E4),
+    onPrimaryContainer = Color(0xFF00201C),
+    secondary = Color(0xFF4A635F),
+    onSecondary = Color(0xFFFFFFFF),
+    secondaryContainer = Color(0xFFCCE8E2),
+    onSecondaryContainer = Color(0xFF051F1C),
+    tertiary = Color(0xFF9A4600),
+    onTertiary = Color(0xFFFFFFFF),
+    tertiaryContainer = Color(0xFFFFDCC6),
+    onTertiaryContainer = Color(0xFF321300),
+    background = Color(0xFFEBF3F0),
+    onBackground = Color(0xFF171D1B),
+    surface = Color(0xFFEBF3F0),
+    onSurface = Color(0xFF171D1B),
+    surfaceVariant = Color(0xFFDBE5E1),
+    onSurfaceVariant = Color(0xFF3F4946),
+    surfaceContainerLowest = Color(0xFFFFFFFF),
+    surfaceContainerLow = Color(0xFFFFFFFF),
+    surfaceContainer = Color(0xFFFDFFFD),
+    surfaceContainerHigh = Color(0xFFF3F9F6),
+    surfaceContainerHighest = Color(0xFFE7EEEB),
+    outline = Color(0xFF6F7975),
+    outlineVariant = Color(0xFFBEC9C5),
+    inverseSurface = Color(0xFF2B3230),
+    inverseOnSurface = Color(0xFFECF2EF),
+    inversePrimary = Color(0xFF82D5C8)
+)
+
+private val TideDark = darkColorScheme(
+    primary = Color(0xFF82D5C8),
+    onPrimary = Color(0xFF003731),
+    primaryContainer = Color(0xFF005048),
+    onPrimaryContainer = Color(0xFF9EF2E4),
+    secondary = Color(0xFFB1CCC6),
+    onSecondary = Color(0xFF1C3531),
+    secondaryContainer = Color(0xFF334B47),
+    onSecondaryContainer = Color(0xFFCCE8E2),
+    tertiary = Color(0xFFFFB877),
+    onTertiary = Color(0xFF522300),
+    tertiaryContainer = Color(0xFF743500),
+    onTertiaryContainer = Color(0xFFFFDCC6),
+    background = Color(0xFF0D1513),
+    onBackground = Color(0xFFDDE4E1),
+    surface = Color(0xFF0D1513),
+    onSurface = Color(0xFFDDE4E1),
+    surfaceVariant = Color(0xFF3F4946),
+    onSurfaceVariant = Color(0xFFBEC9C5),
+    surfaceContainerLowest = Color(0xFF081110),
+    surfaceContainerLow = Color(0xFF151E1C),
+    surfaceContainer = Color(0xFF1A2422),
+    surfaceContainerHigh = Color(0xFF242F2C),
+    surfaceContainerHighest = Color(0xFF2F3A37),
+    outline = Color(0xFF89938F),
+    outlineVariant = Color(0xFF3F4946),
+    inverseSurface = Color(0xFFDDE4E1),
+    inverseOnSurface = Color(0xFF2B3230),
+    inversePrimary = Color(0xFF006960)
+)
+
+private val ZenLight = lightColorScheme(
+    primary = Color(0xFF445E91),
+    onPrimary = Color(0xFFFFFFFF),
+    primaryContainer = Color(0xFFD8E2FF),
+    onPrimaryContainer = Color(0xFF001A41),
+    secondary = Color(0xFF575E71),
+    onSecondary = Color(0xFFFFFFFF),
+    secondaryContainer = Color(0xFFDBE2F9),
+    onSecondaryContainer = Color(0xFF141B2C),
+    tertiary = Color(0xFF715573),
+    onTertiary = Color(0xFFFFFFFF),
+    tertiaryContainer = Color(0xFFFBD7FC),
+    onTertiaryContainer = Color(0xFF29132D),
+    background = Color(0xFFE9EDFB),
+    onBackground = Color(0xFF1A1B20),
+    surface = Color(0xFFE9EDFB),
+    onSurface = Color(0xFF1A1B20),
+    surfaceVariant = Color(0xFFDFE2F0),
+    onSurfaceVariant = Color(0xFF44474F),
+    surfaceContainerLowest = Color(0xFFFFFFFF),
+    surfaceContainerLow = Color(0xFFFFFFFF),
+    surfaceContainer = Color(0xFFFCFDFF),
+    surfaceContainerHigh = Color(0xFFF2F5FF),
+    surfaceContainerHighest = Color(0xFFE4E8F5),
+    outline = Color(0xFF74777F),
+    outlineVariant = Color(0xFFC4C6D0),
+    inverseSurface = Color(0xFF2F3036),
+    inverseOnSurface = Color(0xFFF0F0F7),
+    inversePrimary = Color(0xFFADC6FF)
+)
+
+private val ZenDark = darkColorScheme(
+    primary = Color(0xFFADC6FF),
+    onPrimary = Color(0xFF102F60),
+    primaryContainer = Color(0xFF2B4678),
+    onPrimaryContainer = Color(0xFFD8E2FF),
+    secondary = Color(0xFFBFC6DC),
+    onSecondary = Color(0xFF293041),
+    secondaryContainer = Color(0xFF3F4759),
+    onSecondaryContainer = Color(0xFFDBE2F9),
+    tertiary = Color(0xFFDEBCDF),
+    onTertiary = Color(0xFF402843),
+    tertiaryContainer = Color(0xFF583E5B),
+    onTertiaryContainer = Color(0xFFFBD7FC),
+    background = Color(0xFF111318),
+    onBackground = Color(0xFFE2E2E9),
+    surface = Color(0xFF111318),
+    onSurface = Color(0xFFE2E2E9),
+    surfaceVariant = Color(0xFF44474F),
+    onSurfaceVariant = Color(0xFFC4C6D0),
+    surfaceContainerLowest = Color(0xFF0C0E13),
+    surfaceContainerLow = Color(0xFF191C21),
+    surfaceContainer = Color(0xFF1E2025),
+    surfaceContainerHigh = Color(0xFF282A2F),
+    surfaceContainerHighest = Color(0xFF33353A),
+    outline = Color(0xFF8E9099),
+    outlineVariant = Color(0xFF44474F),
+    inverseSurface = Color(0xFFE2E2E9),
+    inverseOnSurface = Color(0xFF2F3036),
+    inversePrimary = Color(0xFF445E91)
+)
+
+private val EmberLight = lightColorScheme(
+    primary = Color(0xFFA63D00),
+    onPrimary = Color(0xFFFFFFFF),
+    primaryContainer = Color(0xFFFFDBCC),
+    onPrimaryContainer = Color(0xFF380D00),
+    secondary = Color(0xFF77574A),
+    onSecondary = Color(0xFFFFFFFF),
+    secondaryContainer = Color(0xFFFFDBCC),
+    onSecondaryContainer = Color(0xFF2C160C),
+    tertiary = Color(0xFF66558F),
+    onTertiary = Color(0xFFFFFFFF),
+    tertiaryContainer = Color(0xFFE9DDFF),
+    onTertiaryContainer = Color(0xFF211047),
+    background = Color(0xFFFBEFE9),
+    onBackground = Color(0xFF221A16),
+    surface = Color(0xFFFBEFE9),
+    onSurface = Color(0xFF221A16),
+    surfaceVariant = Color(0xFFF4DED4),
+    onSurfaceVariant = Color(0xFF52443D),
+    surfaceContainerLowest = Color(0xFFFFFFFF),
+    surfaceContainerLow = Color(0xFFFFFFFF),
+    surfaceContainer = Color(0xFFFFF8F5),
+    surfaceContainerHigh = Color(0xFFFCEAE2),
+    surfaceContainerHighest = Color(0xFFF6E4DC),
+    outline = Color(0xFF85736B),
+    outlineVariant = Color(0xFFD7C2B8),
+    inverseSurface = Color(0xFF382E2A),
+    inverseOnSurface = Color(0xFFFFEDE6),
+    inversePrimary = Color(0xFFFFB598)
+)
+
+private val EmberDark = darkColorScheme(
+    primary = Color(0xFFFFB598),
+    onPrimary = Color(0xFF591D00),
+    primaryContainer = Color(0xFF7F2C00),
+    onPrimaryContainer = Color(0xFFFFDBCC),
+    secondary = Color(0xFFE7BEAD),
+    onSecondary = Color(0xFF442A1F),
+    secondaryContainer = Color(0xFF5D4034),
+    onSecondaryContainer = Color(0xFFFFDBCC),
+    tertiary = Color(0xFFD0BCFE),
+    onTertiary = Color(0xFF37265D),
+    tertiaryContainer = Color(0xFF4E3D75),
+    onTertiaryContainer = Color(0xFFE9DDFF),
+    background = Color(0xFF19110D),
+    onBackground = Color(0xFFF0DFD8),
+    surface = Color(0xFF19110D),
+    onSurface = Color(0xFFF0DFD8),
+    surfaceVariant = Color(0xFF52443D),
+    onSurfaceVariant = Color(0xFFD7C2B8),
+    surfaceContainerLowest = Color(0xFF130C08),
+    surfaceContainerLow = Color(0xFF211915),
+    surfaceContainer = Color(0xFF261E19),
+    surfaceContainerHigh = Color(0xFF312823),
+    surfaceContainerHighest = Color(0xFF3C332D),
+    outline = Color(0xFFA08D84),
+    outlineVariant = Color(0xFF52443D),
+    inverseSurface = Color(0xFFF0DFD8),
+    inverseOnSurface = Color(0xFF382E2A),
+    inversePrimary = Color(0xFFA63D00)
+)
+
+private val ForestLight = lightColorScheme(
+    primary = Color(0xFF3B6939),
+    onPrimary = Color(0xFFFFFFFF),
+    primaryContainer = Color(0xFFBCF0B4),
+    onPrimaryContainer = Color(0xFF002204),
+    secondary = Color(0xFF52634F),
+    onSecondary = Color(0xFFFFFFFF),
+    secondaryContainer = Color(0xFFD5E8CF),
+    onSecondaryContainer = Color(0xFF101F10),
+    tertiary = Color(0xFF38656A),
+    onTertiary = Color(0xFFFFFFFF),
+    tertiaryContainer = Color(0xFFBCEBF0),
+    onTertiaryContainer = Color(0xFF002023),
+    background = Color(0xFFEDF4E7),
+    onBackground = Color(0xFF181D17),
+    surface = Color(0xFFEDF4E7),
+    onSurface = Color(0xFF181D17),
+    surfaceVariant = Color(0xFFDEE5D8),
+    onSurfaceVariant = Color(0xFF424940),
+    surfaceContainerLowest = Color(0xFFFFFFFF),
+    surfaceContainerLow = Color(0xFFFFFFFF),
+    surfaceContainer = Color(0xFFFCFDF6),
+    surfaceContainerHigh = Color(0xFFF1F7EB),
+    surfaceContainerHighest = Color(0xFFE5EBDF),
+    outline = Color(0xFF72796F),
+    outlineVariant = Color(0xFFC2C9BD),
+    inverseSurface = Color(0xFF2D322B),
+    inverseOnSurface = Color(0xFFEEF2E8),
+    inversePrimary = Color(0xFFA1D399)
+)
+
+private val ForestDark = darkColorScheme(
+    primary = Color(0xFFA1D399),
+    onPrimary = Color(0xFF0A390F),
+    primaryContainer = Color(0xFF235024),
+    onPrimaryContainer = Color(0xFFBCF0B4),
+    secondary = Color(0xFFBACCB3),
+    onSecondary = Color(0xFF253423),
+    secondaryContainer = Color(0xFF3B4B38),
+    onSecondaryContainer = Color(0xFFD5E8CF),
+    tertiary = Color(0xFFA0CFD4),
+    onTertiary = Color(0xFF00363B),
+    tertiaryContainer = Color(0xFF1E4D52),
+    onTertiaryContainer = Color(0xFFBCEBF0),
+    background = Color(0xFF10140F),
+    onBackground = Color(0xFFE0E4DA),
+    surface = Color(0xFF10140F),
+    onSurface = Color(0xFFE0E4DA),
+    surfaceVariant = Color(0xFF424940),
+    onSurfaceVariant = Color(0xFFC2C9BD),
+    surfaceContainerLowest = Color(0xFF0B0F0A),
+    surfaceContainerLow = Color(0xFF181D17),
+    surfaceContainer = Color(0xFF1C211B),
+    surfaceContainerHigh = Color(0xFF272B25),
+    surfaceContainerHighest = Color(0xFF313630),
+    outline = Color(0xFF8C9388),
+    outlineVariant = Color(0xFF424940),
+    inverseSurface = Color(0xFFE0E4DA),
+    inverseOnSurface = Color(0xFF2D322B),
+    inversePrimary = Color(0xFF3B6939)
+)
+
+val StridePalettes: List<StridePalette> = listOf(
+    StridePalette("tide", "Tide", Color(0xFF00A88E), TideLight, TideDark),
+    StridePalette("zen", "Zen", Color(0xFF445E91), ZenLight, ZenDark),
+    StridePalette("ember", "Ember", Color(0xFFB4552D), EmberLight, EmberDark),
+    StridePalette("forest", "Forest", Color(0xFF3B6939), ForestLight, ForestDark)
+)
+
+fun paletteById(id: String): StridePalette = StridePalettes.firstOrNull { it.id == id } ?: StridePalettes.first()

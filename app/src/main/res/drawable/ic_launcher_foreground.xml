@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Monochrome / themed-icon layer. Launchers that support themed icons (Pixel,
+  Lawnchair, Nova, One UI 5+, …) tint this silhouette with the Monet accent.
+  Kept inside the 66dp adaptive-icon safe zone, centred on 54,54.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- head -->
+    <path
+        android:pathData="M 66,32 m -7,0 a 7,7 0 1,1 14,0 a 7,7 0 1,1 -14,0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- torso, leaning into the stride -->
+    <path
+        android:pathData="M 62.5,43 L 53,60"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="10"
+        android:strokeLineCap="round" />
+
+    <!-- leading arm, driving forward -->
+    <path
+        android:pathData="M 61,47 L 71,53.5 L 79,48"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="9"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- trailing arm -->
+    <path
+        android:pathData="M 60,49.5 L 47.5,54.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="9"
+        android:strokeLineCap="round" />
+
+    <!-- front leg, knee up -->
+    <path
+        android:pathData="M 53,60 L 65,68 L 62.5,81"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- back leg, pushing off -->
+    <path
+        android:pathData="M 53,60 L 44,70 L 33,74.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- motion line under the stride -->
+    <path
+        android:pathData="M 28,84 L 52,84"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.65" />
+</vector>
