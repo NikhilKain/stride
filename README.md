@@ -1,43 +1,87 @@
+<p align="center">
+  <img src="docs/logo.png" width="140" alt="Stride">
+</p>
+
 <h1 align="center">Stride</h1>
 
 <p align="center">
-  A Material 3 Expressive step counter for Android — built with Kotlin and Jetpack Compose.
+  <b>A step counter that respects your attention.</b><br>
+  Material 3 Expressive, built in Kotlin and Jetpack Compose.<br>
+  No ads. No account. No analytics. Your steps never leave your phone.
 </p>
 
 <p align="center">
-  <a href="https://github.com/NikhilKain/stride/releases"><img src="https://img.shields.io/github/v/release/NikhilKain/stride?label=Download&style=for-the-badge&color=00A88E&logo=android&logoColor=white"></a>
+  <a href="https://github.com/NikhilKain/stride/releases/latest"><img src="https://img.shields.io/github/v/release/NikhilKain/stride?label=Download%20APK&style=for-the-badge&color=00A88E&logo=android&logoColor=white"></a>
+  <img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+  <img src="https://img.shields.io/badge/License-GPLv3-00A88E?style=for-the-badge">
+</p>
+
+<p align="center">
+  <img src="docs/img1.jpg" width="19%">
+  <img src="docs/img2.jpg" width="19%">
+  <img src="docs/img3.jpg" width="19%">
+  <img src="docs/img4.jpg" width="19%">
+  <img src="docs/img5.jpg" width="19%">
 </p>
 
 ---
 
-## About
+## Why another step counter?
 
-Stride counts your steps and gets out of the way. It reads from **Health Connect**
-when you allow it, and falls back to the phone's hardware step counter otherwise —
-so it works whether or not you use other fitness apps. Nothing leaves your device.
+Most of them want a login, a subscription, and permission to sell your movement
+data to whoever asks. Stride wants none of that. It counts your steps, draws
+them beautifully, and otherwise leaves you alone.
 
-The interface is built on **Material 3 Expressive**: wavy progress indicators,
-shape-morphing badges, spring-driven motion and full Material You theming.
+It reads from **Health Connect** when you allow it, and falls back to the phone's
+hardware step counter when you don't — so it works on day one whether or not you
+use any other fitness app. The two sources are merged by taking whichever saw
+more steps, never by adding them together, so nothing gets double-counted.
 
-## Features
+## What's inside
 
-- **Live step tracking** from Health Connect, with a hardware-sensor fallback
-- **Animated dashboard** — wavy goal ring, odometer step counter, distance,
-  calories and active minutes
-- **History** — weekly bar chart and a monthly calendar heatmap, with per-day detail
-- **Streaks and achievements** — 14 badges in morphing Material shapes
-- **Goals** — daily and weekly targets, plus stride-length calibration from your height
-- **Share cards** — render your day as an image for social apps
-- **Background tracking** with an ongoing notification, and **Android 16 Live Updates**
-  (a promoted progress notification) where the system supports it
-- **Theming** — light/dark/system, Material You wallpaper colours, AMOLED black,
-  four palettes, five colour styles and seven bundled fonts
-- **Backup** — export and import everything as a single JSON file
-- **Localised** in English and Hindi
+**Counting that actually works.** A foreground service keeps counting with the
+screen off and survives a reboot. The hardware counter does the work in silicon,
+so the battery cost is close to nothing.
 
-## Build
+**A dashboard worth opening.** A wavy progress ring that fills as you walk, an
+odometer that rolls digit by digit, and distance, calories and active minutes
+underneath. Distance uses a stride length calibrated from your height, not a
+guess.
 
-Requirements: JDK 17, Android SDK with API 36, Gradle 8.13+.
+**History you can read at a glance.** A weekly bar chart and a monthly calendar
+heatmap, with any day tappable for the detail.
+
+**Streaks and 14 achievements**, each a morphing Material shape rather than
+another gold star. From *First Steps* to *Ultra Walker* at 30,000 in a day.
+
+**Live Updates on Android 16.** A promoted ongoing notification puts your
+progress in the status bar. Support is patchy across manufacturers — the app
+tells you honestly whether your ROM renders it instead of silently doing nothing.
+
+**Share cards.** Renders your day as a 1080×1350 image, gradient background and
+all, ready for wherever you post things.
+
+**Theming, seriously.** Light, dark, system, or pure-black AMOLED. Material You
+wallpaper colours. Four palettes, five colour styles, and six bundled variable
+fonts you can actually tell apart.
+
+**Backups that are just a file.** Everything exports to a single JSON you can
+read, keep, and import on another phone. No cloud in the middle.
+
+**In English and Hindi**, with an in-app language picker.
+
+## Install
+
+Grab the APK from [Releases](https://github.com/NikhilKain/stride/releases/latest).
+Android 8.0 or newer.
+
+On first launch Stride asks for **Physical activity** — it genuinely cannot count
+steps without it. Notification permission is optional, and only used for the
+ongoing counter and goal nudges.
+
+## Build it yourself
+
+Requirements: **JDK 17**, Android SDK with **API 36**.
 
 ```bash
 git clone https://github.com/NikhilKain/stride
@@ -45,40 +89,54 @@ cd stride
 ./gradlew assembleDebug
 ```
 
-Create a `local.properties` with your SDK location if Gradle doesn't find it:
+The wrapper fetches the right Gradle, so that's the whole setup. The APK lands in
+`app/build/outputs/apk/debug/`.
+
+If Gradle can't find your SDK, point it there:
 
 ```properties
+# local.properties
 sdk.dir=/path/to/Android/Sdk
 ```
 
-The APK lands in `app/build/outputs/apk/debug/`.
-
-## Tech
+## Under the hood
 
 | | |
 |---|---|
 | Language | Kotlin |
 | UI | Jetpack Compose, Material 3 Expressive (`1.5.0-alpha17`) |
 | Data | Health Connect, Room, DataStore |
-| Background | WorkManager, foreground service |
+| Background | Foreground service, WorkManager |
 | Min / target SDK | 26 / 36 |
+
+Material 3 Expressive is pinned to an alpha on purpose — the wavy progress
+indicators, shape morphing and `MotionScheme` used throughout the UI aren't in
+the stable release yet.
 
 ## Editions
 
-Stride is developed open-core. This repository holds the open-source edition,
-which is a complete and fully usable step counter. A separate paid edition adds
-extras on top — a GPS walk tracker with maps, deeper insights, a home-screen
-widget and some convenience features. The tracking, history, achievements and
-backup you see here are not crippled or time-limited in any way.
+Stride is developed **open-core**. This repository is the open-source edition: a
+complete, genuinely usable step counter with nothing time-limited, nagged, or
+switched off to upsell you.
 
-## Fonts
+A separate paid edition adds a GPS walk tracker with maps, deeper insights, a
+home-screen widget, and a few conveniences on top. Everything you see here —
+tracking, history, achievements, theming, backups — stays free, and always will.
 
-The bundled typefaces — Nunito, Inter, Outfit, Lexend, Manrope and Space Grotesk —
+## Contributing
+
+Issues and pull requests are welcome. Because a paid edition shares this
+codebase, contributions need a short copyright assignment before they can be
+merged — open an issue first and we'll sort it out there.
+
+## Credits
+
+Bundled typefaces — Nunito, Inter, Outfit, Lexend, Manrope and Space Grotesk —
 are used under the [SIL Open Font License](https://scripts.sil.org/OFL).
 
 ## Licence
 
 [GNU General Public License v3.0](LICENSE)
 
-Stride is free software: you may redistribute and modify it under the terms of
-the GPL. It comes with no warranty.
+Stride is free software: redistribute and modify it under the terms of the GPL.
+It comes with no warranty.
