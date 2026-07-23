@@ -7,7 +7,7 @@
 <p align="center">
   <b>A step counter that respects your attention.</b><br>
   Material 3 Expressive, written in Kotlin and Jetpack Compose.<br>
-  No ads, no account, no analytics — your steps never leave your phone.
+  No ads, no account, no analytics — your steps never leave your device.
 </p>
 
 <p align="center">
