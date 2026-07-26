@@ -25,18 +25,6 @@
 
 </div>
 
-<p align="center">
-  <img src="docs/img1.jpg" width="19%">
-  <img src="docs/img2.jpg" width="19%">
-  <img src="docs/img3.jpg" width="19%">
-  <img src="docs/img4.jpg" width="19%">
-  <img src="docs/img5.jpg" width="19%">
-</p>
-
-<p align="center">
-  <sub><i>Some shots are from Stride Pro — see <a href="#editions">Editions</a>.</i></sub>
-</p>
-
 ---
 
 ## Why another step counter?
@@ -127,6 +115,10 @@ A one-time Gumroad licence key unlocks **Stride Pro** in the same app:
   <img src="docs/img3.jpg" width="19%">
   <img src="docs/img4.jpg" width="19%">
   <img src="docs/img5.jpg" width="19%">
+</p>
+
+<p align="center">
+  <sub><i>Some shots are from Stride Pro — see <a href="#editions">Editions</a>.</i></sub>
 </p>
 
 ## Install
