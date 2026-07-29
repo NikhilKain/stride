@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Stride</string>
+    <string name="share_card_title">Oszd meg a Stride-odat</string>
+    <string name="notif_channel_goal">Cél ünneplések</string>
+    <string name="notif_channel_nudge">Mozgásösztönzők</string>
+    <string name="notif_channel_tracking">Háttérbeli lépésszámlálás</string>
+
+    <!-- Navigation -->
+    <string name="nav_today">Ma</string>
+    <string name="nav_history">Előzmények</string>
+    <string name="nav_awards">Jutalmak</string>
+    <string name="nav_settings">Beállítások</string>
+
+    <!-- Dashboard -->
+    <string name="distance">Távolság</string>
+    <string name="calories">Kalóriák</string>
+    <string name="active_min">Aktív percek</string>
+    <string name="yesterday">Tegnap</string>
+    <string name="seven_day_avg">7 nap átlaga</string>
+    <string name="this_week">Ez a hét</string>
+    <string name="of_steps_goal">%1$s lépés a célból</string>
+    <string name="steps_to_go">%1$s lépés van hátra</string>
+    <string name="goal_crushed">Cél letudva - legendás! 🎉</string>
+    <string name="first_step_quote">Minden út egy lépéssel kezdődik</string>
+    <string name="action_share">Megosztás</string>
+    <string name="action_goal">Cél</string>
+    <string name="action_sync">Szinkronizálás</string>
+    <string name="edit_goal">Cél módosítása</string>
+    <string name="daily_goal">Napi cél</string>
+    <string name="badge_unlocked">Kitűző feloldva!</string>
+    <string name="streak">Sorozat</string>
+    <string name="hc_connect_title">Health Connect csatlakoztatása</string>
+    <string name="hc_update_title">Health Connect frissítése</string>
+    <string name="hc_sensor_title">Eszköz lépésszenzorának használata</string>
+    <string name="hc_connect_body">Szinkronizálja az összes fitneszalkalmazásából származó, részletesebb és pontosabb lépésszám-, távolság- és kalóriadatokat.</string>
+    <string name="hc_update_body">A Health Connect alkalmazást frissítenie kell, mielőtt a Stride el tudná olvasni a lépéseidet.</string>
+    <string name="hc_sensor_body">A Health Connect nem érhető el ezen az eszközön, ezért a Stride a beépített érzékelő segítségével számolja a lépéseket.</string>
+    <string name="connect">Csatlakoztatás</string>
+
+    <!-- History -->
+    <string name="week">Hét</string>
+    <string name="month">Hónap</string>
+    <string name="previous">Előző</string>
+    <string name="next">Következő</string>
+    <string name="day_steps">%1$s lépés</string>
+    <string name="total">Összesen</string>
+    <string name="best_day">Legjobb nap</string>
+    <string name="goals_met">Elért célok</string>
+    <string name="active_short">%1$d perc</string>
+
+    <!-- Awards -->
+    <string name="streak_days">%1$d nap</string>
+    <string name="streak_day_one">1. nap</string>
+    <string name="streak_current_best">Jelenlegi sorozat - Legjobb: %1$d nap</string>
+    <string name="close">Bezárás</string>
+    <string name="unlocked_on">Feloldva %1$s</string>
+
+        <!-- Achievements -->
+    <string name="ach_first_steps_title">Első lépések</string>
+    <string name="ach_first_steps_desc">Rögzítsd az első napod lépésszámát</string>
+    <string name="ach_day_10k_title">10 ezres nap</string>
+    <string name="ach_day_10k_desc">Tegyél meg 10 000 lépést egyetlen nap alatt</string>
+    <string name="ach_day_15k_title">Útkereső</string>
+    <string name="ach_day_15k_desc">Tegyél meg 15 000 lépést egyetlen nap alatt</string>
+    <string name="ach_day_20k_title">Úttörő</string>
+    <string name="ach_day_20k_desc">Tegyél meg 20 000 lépést egyetlen nap alatt</string>
+    <string name="ach_day_30k_title">Ultragyalogos</string>
+    <string name="ach_day_30k_desc">Tegyél meg 30 000 lépést egyetlen nap alatt</string>
+    <string name="ach_streak_3_title">Bemelegítés</string>
+    <string name="ach_streak_3_desc">Érd el a célodat 3 egymást követő napon</string>
+    <string name="ach_streak_7_title">Lángra kapva</string>
+    <string name="ach_streak_7_desc">Érd el a célodat 7 egymást követő napon</string>
+    <string name="ach_streak_14_title">Megállíthatatlan</string>
+    <string name="ach_streak_14_desc">Érd el a célodat 14 egymást követő napon</string>
+    <string name="ach_streak_30_title">Szokássá vált</string>
+    <string name="ach_streak_30_desc">Érd el a célodat 30 egymást követő napon</string>
+    <string name="ach_week_70k_title">Nagy hét</string>
+    <string name="ach_week_70k_desc">Tegyél meg 70 000 lépést egy hét alatt</string>
+    <string name="ach_steady_5of7_title">Kitartó lépegető</string>
+    <string name="ach_steady_5of7_desc">Érd el a célodat a hét bármely 5 napján</string>
+    <string name="ach_marathon_title">Maratoni klub</string>
+    <string name="ach_marathon_desc">Tegyél meg összesen 42,2 km távolságot</string>
+    <string name="ach_dist_100k_title">Százados vándor</string>
+    <string name="ach_dist_100k_desc">Tegyél meg összesen 100 km távolságot</string>
+    <string name="ach_million_title">Milliomos</string>
+    <string name="ach_million_desc">Érd el az 1 000 000 összesített lépésszámot</string>
+
+    <!-- Settings -->
+    <string name="appearance">Megjelenés</string>
+    <string name="theme_system">Rendszer</string>
+    <string name="theme_light">Világos</string>
+    <string name="theme_dark">Sötét</string>
+    <string name="wallpaper_colors">Háttérkép színek</string>
+    <string name="wallpaper_colors_sub">Material You dinamikus színek</string>
+    <string name="amoled_black">AMOLED fekete</string>
+    <string name="amoled_black_sub">Teljesen fekete mód OLED kijelzőkhöz</string>
+    <string name="color_style">Színstílus</string>
+    <string name="style_tonal_spot">Tonal Spot</string>
+    <string name="style_neutral">Semleges</string>
+    <string name="style_monochrome">Monokróm</string>
+    <string name="style_vibrant">Élénk</string>
+    <string name="style_expressive">Kifejező</string>
+    <string name="font">Betűtípus</string>
+    <string name="font_system">Rendszer</string>
+    <string name="font_nunito">Nunito</string>
+    <string name="font_inter">Inter</string>
+    <string name="font_outfit">Outfit</string>
+    <string name="font_lexend">Lexend</string>
+    <string name="font_manrope">Manrope</string>
+    <string name="font_grotesk">Grotesk</string>
+    <string name="goals_body">Célok és test</string>
+    <string name="weekly_goal">Heti cél</string>
+    <string name="height">Magasság</string>
+    <string name="weight_label">Testsúly</string>
+    <string name="stride_length">Lépéshossz</string>
+    <string name="height_sub">%1$d cm - lépéshossz beállításához</string>
+    <string name="weight_sub">%1$d kg - pontosítja a kalóriabecslést</string>
+    <string name="stride_auto">Automatikus - %1$d cm a magasság alapján</string>
+    <string name="stride_manual">%1$d cm (kézi)</string>
+    <string name="auto">Automatikus</string>
+    <string name="off">Kikapcsolva</string>
+    <string name="steps_value">%1$s lépés</string>
+    <string name="units">Mértékegységek</string>
+    <string name="kilometres">Kilométer</string>
+    <string name="miles">Mérföld</string>
+    <string name="health_connect">Health Connect</string>
+    <string name="hc_connected">Csatlakoztatva</string>
+    <string name="hc_not_connected">Nincs csatlakoztatva</string>
+    <string name="hc_update_required">Frissítés szükséges</string>
+    <string name="hc_unavailable">Nem érhető el ezen az eszközön</string>
+    <string name="hc_connected_sub">A lépések, távolság és kalóriák automatikusan szinkronizálódnak</string>
+    <string name="hc_not_connected_sub">Koppints az olvasási hozzáférés engedélyezéséhez</string>
+    <string name="hc_update_sub">Frissítsd a Health Connect alkalmazást</string>
+    <string name="hc_unavailable_sub">A Stride a beépített lépésszenzort használja helyette</string>
+    <string name="tracking">Követés</string>
+    <string name="background_tracking">Háttérben történő követés</string>
+    <string name="background_tracking_sub">Egész nap számolja a lépéseket élő értesítéssel. Kikapcsolásával kényszerített leállítás történik.</string>
+    <string name="notifications">Értesítések</string>
+    <string name="goal_reached">Cél elérve</string>
+    <string name="goal_reached_sub">Ünnepeld, amikor eléred a célodat</string>
+    <string name="evening_nudge">Esti emlékeztető</string>
+    <string name="evening_nudge_sub">Egy finom emlékeztető, ha lemaradásban vagy</string>
+    <string name="data">Adatok</string>
+    <string name="export_backup">Biztonsági mentés exportálása</string>
+    <string name="export_backup_sub">Előzmények, eredmények és beállítások mentése fájlba</string>
+    <string name="import_backup">Biztonsági mentés importálása</string>
+    <string name="import_backup_sub">Visszaállítás Stride biztonsági mentési fájlból</string>
+    <string name="backup_exported">Biztonsági mentés elmentve</string>
+    <string name="backup_imported">Biztonsági mentés visszaállítva - %1$d nap</string>
+    <string name="backup_failed">A fájl nem olvasható</string>
+    <string name="language">Nyelv</string>
+    <string name="app_language">Alkalmazás nyelve</string>
+    <string name="app_language_sub">Válaszd ki a Stride nyelvét</string>
+    <string name="about">Névjegy</string>
+    <string name="about_sub">v%1$s · hogy mozgásban tartson</string>
+    <string name="done">Kész</string>
+    <string name="cancel">Mégse</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_tagline">Minden lépés számít. Lásd, ahogy a napjaid megtelnek mozgással, sorozatokkal és apró sikerekkel.</string>
+    <string name="steps_your_data">A lépéseid, az adataid</string>
+    <string name="hc_rationale_available">A Stride a Health Connectből olvassa ki a lépéseket, távolságot és kalóriákat - a privát, eszközön működő egészségközpontból. Semmi sem hagyja el a telefonodat.</string>
+    <string name="hc_rationale_update">A Health Connect frissítést igényel. Később is frissítheted - addig a Stride a beépített szenzorral számolja a lépéseket.</string>
+    <string name="hc_rationale_unavailable">A Health Connect itt nem érhető el, ezért a Stride a telefon beépített szenzorával számolja a lépéseket.</string>
+    <string name="use_sensor_instead">Szenzor használata helyette</string>
+    <string name="use_builtin_sensor">Beépített szenzor használata</string>
+    <string name="set_your_pace">Állítsd be a tempódat</string>
+    <string name="steps_per_day">lépés naponta</string>
+    <string name="height_value">Magasság - %1$d cm</string>
+    <string name="height_hint">A lépéshossz és a távolság becslésére szolgál.</string>
+    <string name="lets_stride">Indulhat a séta</string>
+    <string name="next_page">Tovább</string>
+
+    <!-- Notifications -->
+    <string name="notif_goal_title">Cél lezúzva! 🎉</string>
+    <string name="notif_goal_text">%1$s lépés ma - tartsd életben a sorozatot.</string>
+    <string name="notif_nudge_title">Egy esti séta?</string>
+    <string name="notif_nudge_text">%1$s lépés van hátra - egy rövid séta elég hozzá.</string>
+    <string name="notif_badge_title">Kitűző feloldva</string>
+    <string name="notif_badge_text">Megszerezted: „%1$s”</string>
+    <string name="notif_steps_today">%1$s lépés ma</string>
+    <string name="notif_goal_progress">%1$d%% a(z) %2$s célból</string>
+    <string name="stop">Leállítás</string>
+
+    <string name="this_month">Ez a hónap</string>
+
+    <string name="tracking_active">A háttérkövetés be van kapcsolva</string>
+
+    <!-- Live Updates (Android 16+) -->
+    <string name="live_updates">Élő frissítések</string>
+    <string name="live_updates_sub">Élő lépésjelző megjelenítése az állapotsávban és a zárolási képernyőn követés közben (Android 16+).</string>
+
+    <!-- Licensing -->
+
+    <!-- Updates -->
+    <string name="updates">Frissítések</string>
+    <string name="check_updates">Frissítések keresése</string>
+    <string name="check_updates_sub">Koppints az új verzió kereséséhez</string>
+    <string name="update_checking">Keresés…</string>
+    <string name="update_up_to_date">A legújabb verziót használod</string>
+    <string name="update_failed">Nem sikerült ellenőrizni, próbáld újra később</string>
+    <string name="update_frequency">Automatikus ellenőrzés</string>
+    <string name="freq_never">Soha</string>
+    <string name="freq_daily">Naponta</string>
+    <string name="freq_weekly">Hetente</string>
+    <string name="freq_monthly">Havonta</string>
+    <string name="update_available">Elérhető a(z) %1$s verzió</string>
+    <string name="update_no_notes">Elérhető a Stride egy új verziója.</string>
+    <string name="update_download">Letöltés</string>
+    <string name="update_skip">Verzió kihagyása</string>
+</resources>
