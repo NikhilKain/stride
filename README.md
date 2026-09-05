@@ -82,7 +82,7 @@ Four sizes, from a two-cell strip to a tile carrying the week's bars. Steps, goa
 Everything exports to a single JSON you can read, keep, and import on another phone. No cloud in the middle.
 
 **🔄 Built-in updater**
-Checks GitHub Releases on your own schedule — daily, weekly, monthly, or manual — with an in-app changelog dialog. No Play Store dependency.
+Checks GitHub Releases on your own schedule — daily, weekly, monthly, or manual — with an in-app changelog dialog. No Play Store dependency. Builds installed from Google Play leave this out and update through the store instead, as Play requires.
 
 **🌐 8 languages**
 English, Arabic, German, Spanish, French, Hindi, Portuguese, and Russian, with an in-app language picker.
