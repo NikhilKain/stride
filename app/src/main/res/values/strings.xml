@@ -210,4 +210,45 @@
     <string name="update_no_notes">A new version of Stride is available.</string>
     <string name="update_download">Download</string>
     <string name="update_skip">Skip this version</string>
+
+    <!-- Home-screen widget -->
+    <string name="widget_description">Today\'s steps, goal, distance and calories at a glance</string>
+    <string name="widget_steps_label">steps</string>
+    <string name="widget_goal_label">Goal %1$s</string>
+    <string name="widget_kcal">%1$s kcal</string>
+    <!-- Sample values, widget-picker preview only. Not shown on the home screen. -->
+    <string name="widget_preview_steps" translatable="false">8,642</string>
+    <string name="widget_preview_goal" translatable="false">Goal 10,000</string>
+    <string name="widget_preview_percent" translatable="false">86%</string>
+    <string name="widget_preview_distance" translatable="false">6.21 km</string>
+    <string name="widget_preview_calories_short" translatable="false">412</string>
+
+    <!-- Which source wins for today when the phone and Health Connect disagree -->
+    <string name="step_source_title">Step source</string>
+    <string name="step_source_auto">Automatic</string>
+    <string name="step_source_auto_sub">Use Health Connect when a watch or band is writing steps, otherwise this phone</string>
+    <string name="step_source_phone">This phone</string>
+    <string name="step_source_phone_sub">Count only what this phone\'s pedometer sees</string>
+    <string name="step_source_hc">Health Connect</string>
+    <string name="step_source_hc_sub">Trust what your watch and other apps report</string>
+    <string name="step_source_compare">Right now: this phone %1$s · Health Connect %2$s</string>
+    <string name="step_source_wearable_seen">A wearable is writing steps today, so Automatic is using Health Connect.</string>
+    <string name="step_source_no_wearable">No wearable steps today, so Automatic is using this phone.</string>
+    <string name="step_source_hint">If your watch shows far more steps than Stride, pick Health Connect.</string>
+
+    <!-- Health Connect write-back -->
+    <string name="hc_write_title">Write steps back</string>
+    <string name="hc_write_sub">Share your steps, distance and calories with other health apps</string>
+    <string name="hc_write_backfilled">Backfilled %1$d days to Health Connect</string>
+    <string name="hc_write_denied">Health Connect did not grant write permission</string>
+    <string name="hc_write_removed">Removed Stride\'s data from Health Connect</string>
+    <string name="hc_write_stop_title">Stop writing to Health Connect?</string>
+    <string name="hc_write_stop_body">Stride will stop publishing new data. What should happen to what it has already shared?</string>
+    <string name="hc_write_stop_only">Just stop</string>
+    <string name="hc_write_stop_and_remove">Stop and remove</string>
+
+    <!-- Dashboard quick tracking control -->
+    <string name="track_all_day">Count steps all day</string>
+    <string name="track_all_day_sub">Keep counting while Stride is closed</string>
+    <string name="start">Start</string>
 </resources>

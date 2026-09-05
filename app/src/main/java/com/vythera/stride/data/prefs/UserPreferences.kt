@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.vythera.stride.model.AppFont
 import com.vythera.stride.model.ColorStyle
+import com.vythera.stride.model.StepSource
 import com.vythera.stride.model.StridePrefs
 import com.vythera.stride.model.ThemeMode
 import com.vythera.stride.model.UnitSystem
@@ -39,6 +40,10 @@ class UserPreferences(private val context: Context) {
         val appFont = stringPreferencesKey("app_font")
         val backgroundTracking = booleanPreferencesKey("background_tracking")
         val liveUpdates = booleanPreferencesKey("live_updates")
+        val hcWrite = booleanPreferencesKey("hc_write")
+        val stepSource = stringPreferencesKey("step_source")
+        // Epoch-day on which AUTO settled on Health Connect; see StepRepository.
+        val autoHcDay = longPreferencesKey("auto_hc_day")
         val updateFrequency = stringPreferencesKey("update_frequency")
         val lastUpdateCheck = longPreferencesKey("last_update_check")
         val skippedVersion = stringPreferencesKey("skipped_version")
@@ -72,6 +77,10 @@ class UserPreferences(private val context: Context) {
             appFont = runCatching { AppFont.valueOf(p[Keys.appFont] ?: "NUNITO") }.getOrDefault(AppFont.NUNITO),
             backgroundTracking = p[Keys.backgroundTracking] ?: false,
             liveUpdates = p[Keys.liveUpdates] ?: false,
+            hcWrite = p[Keys.hcWrite] ?: false,
+            stepSource = runCatching {
+                StepSource.valueOf(p[Keys.stepSource] ?: "AUTO")
+            }.getOrDefault(StepSource.AUTO),
             updateFrequency = runCatching {
                 UpdateFrequency.valueOf(p[Keys.updateFrequency] ?: "WEEKLY")
             }.getOrDefault(UpdateFrequency.WEEKLY)
@@ -97,6 +106,19 @@ class UserPreferences(private val context: Context) {
     suspend fun setAppFont(font: AppFont) = context.dataStore.edit { it[Keys.appFont] = font.name }
     suspend fun setBackgroundTracking(enabled: Boolean) = context.dataStore.edit { it[Keys.backgroundTracking] = enabled }
     suspend fun setLiveUpdates(enabled: Boolean) = context.dataStore.edit { it[Keys.liveUpdates] = enabled }
+    suspend fun setHcWrite(enabled: Boolean) = context.dataStore.edit { it[Keys.hcWrite] = enabled }
+    suspend fun setStepSource(source: StepSource) =
+        context.dataStore.edit { it[Keys.stepSource] = source.name }
+
+    /**
+     * The day AUTO last handed today over to Health Connect. Persisted so the
+     * decision survives the process being killed — recomputing it after a
+     * restart would find our own sensor no longer at zero and silently fall back
+     * to the phone.
+     */
+    suspend fun autoHcDay(): Long = context.dataStore.data.first()[Keys.autoHcDay] ?: Long.MIN_VALUE
+    suspend fun setAutoHcDay(epochDay: Long) =
+        context.dataStore.edit { it[Keys.autoHcDay] = epochDay }
     suspend fun setUpdateFrequency(freq: UpdateFrequency) =
         context.dataStore.edit { it[Keys.updateFrequency] = freq.name }
 

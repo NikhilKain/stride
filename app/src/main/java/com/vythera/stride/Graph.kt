@@ -2,7 +2,9 @@ package com.vythera.stride
 
 import android.content.Context
 import com.vythera.stride.data.db.StrideDatabase
+import com.vythera.stride.data.health.HealthConnectExporter
 import com.vythera.stride.data.health.HealthConnectManager
+import com.vythera.stride.data.health.HealthExporter
 import com.vythera.stride.data.health.StepSensorManager
 import com.vythera.stride.data.prefs.UserPreferences
 import com.vythera.stride.data.repo.StepRepository
@@ -20,6 +22,9 @@ object Graph {
     lateinit var healthConnect: HealthConnectManager
         private set
     lateinit var stepSensor: StepSensorManager
+        private set
+    /** Sinks daily totals are published to. */
+    lateinit var healthExporters: List<HealthExporter>
         private set
     lateinit var notifier: Notifier
         private set
@@ -41,7 +46,10 @@ object Graph {
             healthConnect = HealthConnectManager(app)
             stepSensor = StepSensorManager(app)
             notifier = Notifier(app)
-            repository = StepRepository(healthConnect, stepSensor, database, prefs, notifier, appScope)
+            healthExporters = listOf(HealthConnectExporter(healthConnect))
+            repository = StepRepository(
+                app, healthConnect, stepSensor, database, prefs, notifier, appScope, healthExporters
+            )
             initialized = true
         }
     }

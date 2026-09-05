@@ -31,6 +31,7 @@ import androidx.compose.material.icons.automirrored.rounded.DirectionsRun
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Celebration
 import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Sync
 import androidx.compose.material.icons.rounded.Contrast
 import androidx.compose.material.icons.rounded.DirectionsWalk
 import androidx.compose.material.icons.rounded.Download
@@ -82,7 +83,9 @@ import com.vythera.stride.data.update.UpdateChecker
 import com.vythera.stride.data.update.UpdateInfo
 import com.vythera.stride.model.AppFont
 import com.vythera.stride.model.ColorStyle
+import com.vythera.stride.data.repo.StepRepository
 import com.vythera.stride.model.HcState
+import com.vythera.stride.model.StepSource
 import com.vythera.stride.model.StridePrefs
 import com.vythera.stride.model.ThemeMode
 import com.vythera.stride.model.UnitSystem
@@ -110,15 +113,79 @@ class SettingsViewModel : ViewModel() {
 
     val hcState = MutableStateFlow(HcState.UNAVAILABLE)
 
+    /** True once Health Connect has actually granted the write permissions. */
+    val hcCanWrite = MutableStateFlow(false)
+
+    /**
+     * Today's two counts side by side, so the source picker shows real numbers
+     * rather than asking the user to choose between abstractions.
+     */
+    val sourceComparison = MutableStateFlow<StepRepository.SourceComparison?>(null)
+
     init { refreshHc() }
 
     fun refreshHc() {
         viewModelScope.launch {
             hcState.value = if (Graph.repository.hcGranted()) HcState.GRANTED else hc.availability()
+            hcCanWrite.value = hc.hasWritePermissions()
+            if (hcState.value == HcState.GRANTED) refreshSourceComparison()
+        }
+    }
+
+    fun refreshSourceComparison() {
+        viewModelScope.launch {
+            sourceComparison.value =
+                runCatching { Graph.repository.inspectTodaySources() }.getOrNull()
+        }
+    }
+
+    /**
+     * Switching source re-syncs immediately: the point of the setting is that
+     * the user is looking at a wrong number and wants it corrected now.
+     */
+    fun setStepSource(source: StepSource) {
+        viewModelScope.launch {
+            // A choice made by hand supersedes whatever Stride concluded on its
+            // own earlier today.
+            Graph.repository.resetAutoSourceDecision()
+            prefs.setStepSource(source)
+            runCatching { Graph.repository.syncToday() }
+            refreshSourceComparison()
+        }
+    }
+
+    /**
+     * Turns write-back on only if Health Connect really granted the permission —
+     * the user can approve partially, and the toggle must not claim to be on
+     * when nothing can be written. [onResult] reports days backfilled, or null
+     * if permission was refused.
+     */
+    fun applyHcWrite(enabled: Boolean, onResult: (Int?) -> Unit = {}) {
+        viewModelScope.launch {
+            if (!enabled) {
+                prefs.setHcWrite(false)
+                hcCanWrite.value = hc.hasWritePermissions()
+                onResult(0)
+                return@launch
+            }
+            val granted = hc.hasWritePermissions()
+            hcCanWrite.value = granted
+            prefs.setHcWrite(granted)
+            onResult(if (granted) Graph.repository.exportHistory(30) else null)
+        }
+    }
+
+    /** Deletes everything Stride has written, then turns the toggle off. */
+    fun withdrawHcWrites(onDone: () -> Unit = {}) {
+        viewModelScope.launch {
+            Graph.repository.withdrawFromHealthConnect()
+            prefs.setHcWrite(false)
+            onDone()
         }
     }
 
     fun hcPermissions() = hc.permissions
+    fun hcWritePermissions() = hc.writePermissions
     fun hcContract() = hc.permissionContract()
 
     fun set(block: suspend () -> Unit) {
@@ -136,8 +203,22 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
+    val sourceComparison by viewModel.sourceComparison.collectAsStateWithLifecycle()
+    var showHcWithdraw by remember { mutableStateOf(false) }
+    val hcWriteBackfilled = stringResource(R.string.hc_write_backfilled)
+    val hcWriteDeniedMsg = stringResource(R.string.hc_write_denied)
+
     val hcLauncher = rememberLauncherForActivityResult(viewModel.hcContract()) {
         viewModel.refreshHc()
+    }
+    val hcWriteLauncher = rememberLauncherForActivityResult(viewModel.hcContract()) {
+        viewModel.applyHcWrite(true) { days ->
+            Toast.makeText(
+                context,
+                if (days == null) hcWriteDeniedMsg else String.format(hcWriteBackfilled, days),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
     val notifLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -541,6 +622,28 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
                     else -> null
                 }
             )
+            // Only worth asking which source wins once there are two of them.
+            if (hcState == HcState.GRANTED) {
+                StepSourcePicker(
+                    selected = prefs.stepSource,
+                    comparison = sourceComparison,
+                    onSelect = { viewModel.setStepSource(it) }
+                )
+                SettingRow(
+                    title = stringResource(R.string.hc_write_title),
+                    subtitle = stringResource(R.string.hc_write_sub),
+                    icon = Icons.Rounded.Sync
+                ) {
+                    IconSwitch(
+                        checked = prefs.hcWrite,
+                        icon = Icons.Rounded.Sync,
+                        onCheckedChange = { on ->
+                            if (on) hcWriteLauncher.launch(viewModel.hcWritePermissions())
+                            else showHcWithdraw = true
+                        }
+                    )
+                }
+            }
         }
 
         SettingsCard(title = stringResource(R.string.notifications), modifier = Modifier.entrance(6)) {
@@ -667,6 +770,29 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
         UpdateDialog(info = info, onDismiss = { foundUpdate = null })
     }
 
+    if (showHcWithdraw) {
+        val removedMsg = stringResource(R.string.hc_write_removed)
+        AlertDialog(
+            onDismissRequest = { showHcWithdraw = false },
+            title = { Text(stringResource(R.string.hc_write_stop_title)) },
+            text = { Text(stringResource(R.string.hc_write_stop_body)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showHcWithdraw = false
+                    viewModel.withdrawHcWrites {
+                        Toast.makeText(context, removedMsg, Toast.LENGTH_SHORT).show()
+                    }
+                }) { Text(stringResource(R.string.hc_write_stop_and_remove)) }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    showHcWithdraw = false
+                    viewModel.applyHcWrite(false)
+                }) { Text(stringResource(R.string.hc_write_stop_only)) }
+            }
+        )
+    }
+
     if (showGoalDialog) {
         AlertDialog(
             onDismissRequest = { showGoalDialog = false },
@@ -748,6 +874,107 @@ private fun SettingsCard(title: String, modifier: Modifier = Modifier, content: 
                 content()
             }
         }
+    }
+}
+
+/**
+ * Which source wins for today's count.
+ *
+ * Deliberately shows both numbers as they stand right now. A user arrives here
+ * because their watch says one thing and Stride says another, and the fastest
+ * way to make the setting make sense is to put the two figures next to each
+ * other and let them pick the one that matches reality.
+ */
+@Composable
+private fun StepSourcePicker(
+    selected: StepSource,
+    comparison: StepRepository.SourceComparison?,
+    onSelect: (StepSource) -> Unit
+) {
+    Column(modifier = Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 8.dp)) {
+        Text(
+            stringResource(R.string.step_source_title),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.padding(bottom = 2.dp)
+        )
+
+        val options = listOf(
+            Triple(StepSource.AUTO, R.string.step_source_auto, R.string.step_source_auto_sub),
+            Triple(StepSource.PHONE, R.string.step_source_phone, R.string.step_source_phone_sub),
+            Triple(StepSource.HEALTH_CONNECT, R.string.step_source_hc, R.string.step_source_hc_sub)
+        )
+        options.forEach { (source, titleRes, subRes) ->
+            val active = source == selected
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(14.dp))
+                    .bouncyClickable(scaleDown = 0.98f) { onSelect(source) }
+                    .background(
+                        if (active) MaterialTheme.colorScheme.primaryContainer
+                        else MaterialTheme.colorScheme.surface.copy(alpha = 0f)
+                    )
+                    .padding(horizontal = 12.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        stringResource(titleRes),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = if (active) MaterialTheme.colorScheme.onPrimaryContainer
+                        else MaterialTheme.colorScheme.onSurface
+                    )
+                    Text(
+                        stringResource(subRes),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = if (active) MaterialTheme.colorScheme.onPrimaryContainer
+                        else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                if (active) {
+                    Icon(
+                        Icons.Rounded.Check,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
+        }
+
+        comparison?.let { c ->
+            Text(
+                stringResource(
+                    R.string.step_source_compare,
+                    Formatters.steps(c.phoneSteps),
+                    Formatters.steps(c.healthConnectSteps)
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 8.dp, start = 12.dp)
+            )
+            // Automatic is the only mode whose behaviour isn't stated by its own
+            // name, so say which way it has actually gone.
+            if (selected == StepSource.AUTO) {
+                Text(
+                    stringResource(
+                        if (c.hasWearable) R.string.step_source_wearable_seen
+                        else R.string.step_source_no_wearable
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 2.dp, start = 12.dp)
+                )
+            }
+        }
+
+        Text(
+            stringResource(R.string.step_source_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp, start = 12.dp)
+        )
     }
 }
 

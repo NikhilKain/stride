@@ -27,6 +27,17 @@ enum class ThemeMode { SYSTEM, LIGHT, DARK }
 
 enum class HcState { AVAILABLE, NEEDS_UPDATE, UNAVAILABLE, GRANTED }
 
+/**
+ * Which source wins for the current day when both the phone pedometer and
+ * Health Connect have data for it.
+ *
+ * [AUTO] prefers Health Connect when a wearable wrote today's steps, or when
+ * Health Connect already holds a day this phone never saw any part of. A watch
+ * or band sees walking a pocketed phone misses; another phone-side app writing
+ * the same steps the phone already counted does not.
+ */
+enum class StepSource { AUTO, PHONE, HEALTH_CONNECT }
+
 /** Monet-style palette treatments, ColorBlendr-style. */
 enum class ColorStyle { TONAL_SPOT, NEUTRAL, MONOCHROME, VIBRANT, EXPRESSIVE }
 
@@ -58,6 +69,17 @@ data class StridePrefs(
     val appFont: AppFont = AppFont.NUNITO,
     val backgroundTracking: Boolean = false,
     val liveUpdates: Boolean = false,
+    /**
+     * Opt-in: publish each day's totals back to Health Connect so other apps can
+     * read them. Off by default — writing into a store shared with every other
+     * health app is the user's call, not a default.
+     */
+    val hcWrite: Boolean = false,
+    /**
+     * Which source wins for today when both the phone and Health Connect have
+     * data. Defaults to [StepSource.AUTO]; see the enum for why.
+     */
+    val stepSource: StepSource = StepSource.AUTO,
     val updateFrequency: UpdateFrequency = UpdateFrequency.WEEKLY
 ) {
     /** Stride length in meters; auto-derived from height unless overridden. */

@@ -35,8 +35,8 @@ beautifully, and otherwise leaves you alone.
 
 It reads from **Health Connect** when you allow it and falls back to the phone's
 hardware step counter when you don't — so it works on day one whether or not you
-use any other fitness app. The two sources are merged by taking whichever saw
-more steps, never by adding them, so nothing is ever double-counted.
+use any other fitness app. The two are never added together: one source wins the
+day, and you can say which.
 
 <a id="features"></a>
 ## ✨ What's inside
@@ -50,6 +50,12 @@ A foreground service keeps counting with the screen off and survives a reboot. T
 
 **📊 A dashboard worth opening**
 A wavy ring that fills as you walk, an odometer that rolls digit by digit, and distance, calories and active minutes underneath. Distance uses a stride length calibrated from your height (with a manual override), not a guess.
+
+**⚖️ You choose which source to trust**
+A phone in a pocket under-counts against a watch on a wrist; a phone with Google Fit writing beside it can double-count the same walk. Rather than guess, Stride puts *Step source* in Settings — Automatic, this phone, or Health Connect — and shows both of today's counts side by side, so you pick between two real numbers.
+
+**🔄 Health Connect, both ways**
+Stride reads from Health Connect, and can write back to it. Write-back is off by default; turn it on and your steps, distance and calories reach your other health apps. Calories are filed as *active*, never total, so they can't inflate anyone else's figures.
 
 **📅 History at a glance**
 A weekly bar chart and a monthly calendar heatmap, with any day tappable for the detail.
@@ -69,6 +75,9 @@ Renders your day as a Story (1080×1920), Post (1080×1350), or Square (1080×10
 **🎨 Theming, seriously**
 Light, dark, system, or pure-black AMOLED. Material You wallpaper colours. Four hand-tuned palettes, five colour styles, and seven bundled variable fonts you can actually tell apart.
 
+**🧩 A home-screen widget**
+Four sizes, from a two-cell strip to a tile carrying the week's bars. Steps, goal progress, distance and calories, drawn in your palette and your light/dark setting, and it opens the app when tapped.
+
 **💾 Backups that are just a file**
 Everything exports to a single JSON you can read, keep, and import on another phone. No cloud in the middle.
 
@@ -85,7 +94,7 @@ English, Arabic, German, Spanish, French, Hindi, Portuguese, and Russian, with a
 <a id="editions"></a>
 ## 💎 Editions
 
-Stride is developed **open-core** — one codebase, one APK, not a separate download. Everything in this repository is free forever: tracking, history, all 14 achievements, 2 of the 4 palettes (*Tide* and *Zen*), all 5 colour styles, all 7 fonts, backups, and the built-in updater. Nothing here is time-limited, nagged, or switched off to upsell you.
+Stride is developed **open-core** — one codebase, one APK, not a separate download. Everything in this repository is free forever: tracking, the step-source control, Health Connect in both directions, the home-screen widget, history, all 14 achievements, 2 of the 4 palettes (*Tide* and *Zen*), all 5 colour styles, all 7 fonts, backups, and the built-in updater. Nothing here is time-limited, nagged, or switched off to upsell you.
 
 A one-time Gumroad licence key unlocks **Stride Pro** in the same app:
 
@@ -93,9 +102,9 @@ A one-time Gumroad licence key unlocks **Stride Pro** in the same app:
 <tr><td>
 
 - 🗺️ **GPS walk tracker** with OpenStreetMap-based maps
-- 📈 **Deeper insights**
-- 📱 **Home-screen widget**
-- 🎨 Two extra palettes — *Ember* and *Forest*
+- 📈 **Deeper insights** and a weekly recap
+- 🖼️ **Share studio**, streak freezes and goal coaching
+- 🎨 Two extra visual skins, plus the *Ember* and *Forest* palettes
 
 <div align="center">
 

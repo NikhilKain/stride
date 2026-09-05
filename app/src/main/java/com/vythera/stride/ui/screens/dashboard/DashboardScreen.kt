@@ -1,7 +1,12 @@
 package com.vythera.stride.ui.screens.dashboard
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.content.Context
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -35,6 +40,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.DirectionsWalk
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.EmojiEvents
 import androidx.compose.material.icons.rounded.FavoriteBorder
@@ -187,6 +193,18 @@ class DashboardViewModel : ViewModel() {
         viewModelScope.launch { prefs.setBackgroundTracking(false) }
     }
 
+    /**
+     * Starts all-day counting from the dashboard.
+     *
+     * The same switch lives in Settings, but people asked for "a button to start
+     * tracking when I actually want to" without finding it — four taps deep, it
+     * may as well not have been there.
+     */
+    fun startBackgroundTracking(context: Context) {
+        com.vythera.stride.service.StepTrackingService.start(context)
+        viewModelScope.launch { prefs.setBackgroundTracking(true) }
+    }
+
     fun hcPermissions() = hc.permissions
     fun hcContract() = hc.permissionContract()
 
@@ -231,6 +249,27 @@ fun DashboardScreen(
         viewModel.refresh()
     }
 
+    // All-day counting needs activity recognition for the health foreground
+    // service; the notification permission only decides whether the ongoing chip
+    // is visible, so counting starts either way once recognition is granted.
+    val trackingPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { results ->
+        if (results[Manifest.permission.ACTIVITY_RECOGNITION] != false) {
+            viewModel.startBackgroundTracking(context)
+        }
+    }
+    val startTracking = {
+        val missing = buildList {
+            if (Build.VERSION.SDK_INT >= 29) add(Manifest.permission.ACTIVITY_RECOGNITION)
+            if (Build.VERSION.SDK_INT >= 33) add(Manifest.permission.POST_NOTIFICATIONS)
+        }.filter {
+            ContextCompat.checkSelfPermission(context, it) != PackageManager.PERMISSION_GRANTED
+        }
+        if (missing.isEmpty()) viewModel.startBackgroundTracking(context)
+        else trackingPermissionLauncher.launch(missing.toTypedArray())
+    }
+
     // Haptic tick every 1,000 steps
     var lastBucket by remember { mutableIntStateOf(-1) }
     LaunchedEffect(state.stats.steps) {
@@ -262,6 +301,13 @@ fun DashboardScreen(
                 if (state.prefs.backgroundTracking) {
                     TrackingBanner(
                         onStop = { viewModel.stopBackgroundTracking(context) },
+                        modifier = Modifier.entrance(0)
+                    )
+                } else {
+                    // The banner offers "stop", so the start half of the pair
+                    // belongs beside it rather than four taps into Settings.
+                    StartTrackingCard(
+                        onStart = startTracking,
                         modifier = Modifier.entrance(0)
                     )
                 }
@@ -675,6 +721,62 @@ private fun ConnectCard(hcState: HcState, onConnect: () -> Unit, modifier: Modif
                         modifier = Modifier.padding(horizontal = 22.dp, vertical = 10.dp)
                     )
                 }
+            }
+        }
+    }
+}
+
+/**
+ * The counterpart to [TrackingBanner]: one tap to start all-day counting.
+ *
+ * Sits in the same slot the running banner occupies, so the dashboard always
+ * states the tracking state and offers the opposite action — rather than saying
+ * nothing at all when it's off, which is how people came to ask for a feature
+ * the app already had.
+ */
+@Composable
+private fun StartTrackingCard(onStart: () -> Unit, modifier: Modifier = Modifier) {
+    Surface(
+        shape = RoundedCornerShape(20.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .clickable(onClick = onStart)
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Icon(
+                Icons.Rounded.DirectionsWalk,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(22.dp)
+            )
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    stringResource(R.string.track_all_day),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    stringResource(R.string.track_all_day_sub),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Surface(
+                shape = RoundedCornerShape(50),
+                color = MaterialTheme.colorScheme.primary
+            ) {
+                Text(
+                    text = stringResource(R.string.start),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier.padding(horizontal = 18.dp, vertical = 8.dp)
+                )
             }
         }
     }
