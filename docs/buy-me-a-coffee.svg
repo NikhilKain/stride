@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="84" viewBox="0 0 360 84" role="img" aria-label="Buy me a coffee">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE45C"/>
+      <stop offset="1" stop-color="#FFC93C"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect x="6" y="4" width="348" height="70" rx="35" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="6.75" y="4.75" width="346.5" height="68.5" rx="34.25" fill="none" stroke="#1A0E07" stroke-opacity="0.12" stroke-width="1.5"/>
+  <!-- Cup -->
+  <g transform="translate(34 18)" fill="none" stroke="#1A0E07" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 3c0 3 2.5 3 2.5 6M17 3c0 3 2.5 3 2.5 6M25 3c0 3 2.5 3 2.5 6" stroke-width="2.6" stroke-opacity="0.75"/>
+    <path d="M4 15h29v13a11 11 0 0 1-11 11h-7A11 11 0 0 1 4 28V15z" fill="#FFFFFF"/>
+    <path d="M33 19h3.5a6 6 0 0 1 0 12H33"/>
+    <path d="M3 44h31"/>
+  </g>
+  <text x="208" y="49" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="27" font-weight="700" fill="#1A0E07">Buy me a coffee</text>
+</svg>
