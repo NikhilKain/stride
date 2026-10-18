@@ -165,6 +165,19 @@ A separate paid edition adds a GPS walk tracker with maps, deeper insights, a
 home-screen widget and a few conveniences on top. Everything in this repository —
 tracking, history, achievements, theming, backups — is free and stays that way.
 
+### ☕ Buy me a coffee
+
+Hey! 👋 I'm Nikhil, an indie Android developer building this project in my free time — making apps from GitHub, GitLab, F-Droid and other developer-first sources easier to discover, install and manage on Android, while keeping everything open, fast and user-friendly.
+
+Every contribution goes directly toward new features, bug fixes, performance improvements and long-term development.
+
+<p align="center">
+  <a href="https://buy.polar.sh/polar_cl_9FTHFMbmf680aHGH7j3rq6Ii7XsgDFOgLD0Ah3osilE"><img src="docs/buy-me-a-coffee.svg" alt="Buy me a coffee" width="300"></a>
+
+*Thank you for supporting independent open-source development ❤️*
+
+</p>
+
 ## Contributing
 
 Issues and pull requests are welcome. Because a paid edition shares this codebase,
