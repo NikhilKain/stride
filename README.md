@@ -10,6 +10,15 @@ No ads, no account, no analytics — your steps never leave your phone.
 
 <br>
 
+### 🎉 Stride is now on Google Play
+
+<a href="https://play.google.com/store/apps/details?id=com.vythera.stride"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80" alt="Get it on Google Play"></a>
+
+Bought Premium on Gumroad or Polar? **[Swap your key for a free Play code →](https://stride-move.narzo9990.workers.dev)**<br>
+<sub>Coming from the GitHub version? See <a href="#moving-to-google-play">Moving to Google Play</a> so you keep your history.</sub>
+
+<br><br>
+
 <a href="https://github.com/NikhilKain/stride/releases/latest"><img src="docs/readme/badges/download.svg" height="40" alt="Download APK"></a>
 <img src="docs/readme/badges/android.svg" height="40" alt="Android 8.0+">
 <a href="LICENSE"><img src="docs/readme/badges/license.svg" height="40" alt="License GPLv3"></a>
@@ -26,7 +35,7 @@ No ads, no account, no analytics — your steps never leave your phone.
 
 <br><br>
 
-[Why](#why-another-step-counter) · [Features](#whats-inside) · [Install](#install) · [Build](#build-it-yourself) · [Under the hood](#under-the-hood) · [Editions](#editions) · [Contributing](#contributing)
+[Why](#why-another-step-counter) · [Features](#whats-inside) · [Install](#install) · [Move to Play](#moving-to-google-play) · [Build](#build-it-yourself) · [Under the hood](#under-the-hood) · [Editions](#editions) · [Contributing](#contributing)
 
 </div>
 
@@ -107,13 +116,35 @@ with an in-app language picker.
 
 ## Install
 
-Grab the APK from [Releases](https://github.com/NikhilKain/stride/releases/latest).
+The easiest way is **[Google Play](https://play.google.com/store/apps/details?id=com.vythera.stride)**:
+updates arrive on their own, and Premium follows your Google account to any new phone.
+
+You can also grab the APK from [Releases](https://github.com/NikhilKain/stride/releases/latest).
 Android 8.0 or newer.
 
 > [!NOTE]
 > On first launch Stride asks for **Physical activity** — it genuinely cannot count
 > steps without it. Notifications are optional, and only used for the ongoing
 > counter and goal nudges.
+
+## Moving to Google Play
+
+**Bought Premium on Gumroad or Polar?** You don't pay again. Swap your licence key
+for a free Google Play code at **[stride-move.narzo9990.workers.dev](https://stride-move.narzo9990.workers.dev)**.
+Each key can be swapped once, and it keeps working in the version you have now.
+
+**Using the APK from GitHub?** The Play version is signed by Google, so it can't
+install over this one. To keep your history:
+
+1. In Stride, tap **Settings → Export backup**.
+2. Uninstall the GitHub version.
+3. Install [Stride from Google Play](https://play.google.com/store/apps/details?id=com.vythera.stride)
+   and redeem your Play code, if you have one.
+4. Tap **Settings → Import backup**. Premium unlocks by itself, or tap
+   **Settings → Premium → Restore purchase**.
+
+Need help? Message [@Vytheraa](https://t.me/Vytheraa) on Telegram, or ask in the
+[support group](https://t.me/vythera_apps).
 
 ## Build it yourself
 
@@ -161,9 +192,11 @@ Stride is developed **open-core**. This repository is the open-source edition: a
 complete, genuinely usable step counter with nothing time-limited, nagged, or
 switched off to upsell you.
 
-A separate paid edition adds a GPS walk tracker with maps, deeper insights, a
-home-screen widget and a few conveniences on top. Everything in this repository —
-tracking, history, achievements, theming, backups — is free and stays that way.
+The full edition is **[Stride on Google Play](https://play.google.com/store/apps/details?id=com.vythera.stride)**:
+free to install, with an optional one-time Premium purchase that adds a GPS walk
+and run tracker with maps, deeper insights, extra themes and a few conveniences on
+top. Everything in this repository — tracking, history, achievements, theming,
+backups — is free and stays that way.
 
 ### ☕ Buy me a coffee
 
