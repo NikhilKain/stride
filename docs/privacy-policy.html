@@ -19,7 +19,7 @@
 <body>
 
 <h1>Stride — Privacy Policy</h1>
-<p class="muted">Last updated: 27 July 2026</p>
+<p class="muted">Last updated: 16 November 2026</p>
 
 <p>Stride (“the app”) is a step-counter and fitness-tracking application published by
 Vythera (“we”, “us”). This policy explains what data the app processes, why, and the
@@ -29,6 +29,7 @@ choices you have. We designed Stride to keep your fitness data on your device by
 <ul>
   <li>Your <strong>step, distance, calorie and walk data stays on your device.</strong> We do not upload it to us or sell it.</li>
   <li>The app uses <strong>Google Analytics for Firebase</strong> to collect anonymous, aggregated usage statistics so we can improve it.</li>
+  <li>It also sends an <strong>anonymous usage count</strong> (a random device code, phone model, Android and app version, and country) so we know how many phones use Stride. You can turn it off in Settings.</li>
   <li>Premium is a one-time purchase processed by <strong>Google Play Billing</strong>. We never see your card or payment details.</li>
   <li>We do not require an account, and we do not ask for your name, email, or phone number.</li>
 </ul>
@@ -62,6 +63,19 @@ It is processed by Google; see Google’s
 <a href="https://firebase.google.com/support/privacy">Firebase Privacy and Security</a>.
 The open-source edition of Stride contains no analytics of any kind.</p>
 
+<h3>Anonymous usage count</h3>
+<p>Stride (the Google Play and GitHub editions) tells our own server how many phones use it.
+When the app comes to the foreground, every five minutes while it is open, and when it
+closes, it sends: a code made from your device's Android ID and the app's package name
+with a one-way hash (SHA-256), so the ID itself never leaves your phone; a random
+installation code and a random code for that session; how long the app has been open; your
+phone's maker and model; the Android version; and Stride's version. Our server, run on
+Cloudflare, keeps the country the connection came from. It does not store your IP address,
+city or region.</p>
+<p>It never sends your steps, distance, calories, routes, location, health data, or anything
+you type into the app. You can turn it off at any time in <strong>Settings → Data →
+Anonymous usage count</strong>; nothing more is sent after that.</p>
+
 <h2>5. Purchases</h2>
 <p>Premium features are unlocked with a one-time purchase through
 <strong>Google Play Billing</strong>. Google processes the payment; we receive only
@@ -74,7 +88,7 @@ whether the purchase is active. We do not receive or store your payment informat
   <li><code>ACCESS_FINE/COARSE_LOCATION</code>, <code>FOREGROUND_SERVICE_LOCATION</code> — optional, only for Premium walk tracking.</li>
   <li><code>POST_NOTIFICATIONS</code>, foreground-service permissions — to show the live step notification and count steps in the background.</li>
   <li><code>SYSTEM_ALERT_WINDOW</code> — optional, for the floating step “island” overlay.</li>
-  <li><code>INTERNET</code> — for analytics, map tiles, and Play Billing.</li>
+  <li><code>INTERNET</code> — for analytics, the anonymous usage count, map tiles, and Play Billing.</li>
   <li><code>com.android.vending.BILLING</code> — for the Premium purchase.</li>
 </ul>
 
@@ -82,7 +96,8 @@ whether the purchase is active. We do not receive or store your payment informat
 <p>Your fitness data lives on your device. <strong>Uninstalling the app deletes all of it.</strong>
 You can also export or clear your data from within the app’s settings. Analytics data is
 retained by Google according to your Firebase configuration; you can limit ad/analytics
-identifiers through your device settings.</p>
+identifiers through your device settings. Usage-count records are kept on our server until
+we delete them; they hold no name, contact details or fitness data.</p>
 
 <h2>8. Children</h2>
 <p>Stride is not directed at children under 13, and we do not knowingly collect personal
